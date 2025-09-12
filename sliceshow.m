@@ -112,10 +112,27 @@ mydata.vecImg = vecImg;
 mydata.xi = xi; mydata.yi = yi; mydata.zi = zi;
 if ~isempty(mydata.mri2mni), mydata.mnipos = round(mydata.mri2mni*[mydata.pos_crop 1]'); end
 
-whratio = 1.0187; %Width-to-height ratio
-w = 8.5; %Width in inches
-% link the callback function to new figure
-fh = uifigure('WindowButtonDownFcn',@(src, event) myCallback(src, event, minR, minA, minS),'Name',figName,'NumberTitle','off','Units','inches','Position',[0,0,w,w/whratio],'AutoResizeChildren','off','SizeChangedFcn',@(src,event) figResize(src,event,minR,minA,minS));
+str = computer('arch');
+switch str
+    case 'win64'
+        whratio = 1.0187; %Width-to-height ratio
+        w = 8.5*96; %Width in pixels
+        % link the callback function to new figure
+        fh = uifigure('WindowButtonDownFcn',@(src, event) myCallback(src, event, minR, minA, minS),'Name',figName,'NumberTitle','off','Units','pixels','Position',[0,0,w,w/whratio],'AutoResizeChildren','off','SizeChangedFcn',@(src,event) figResize(src,event,minR,minA,minS));
+    case 'glnxa64'
+        whratio = 1.0187; %Width-to-height ratio
+        w = 8.5; %Width in inches
+        % link the callback function to new figure
+        fh = uifigure('WindowButtonDownFcn',@(src, event) myCallback(src, event, minR, minA, minS),'Name',figName,'NumberTitle','off','Units','inches','Position',[0,0,w,w/whratio],'AutoResizeChildren','off','SizeChangedFcn',@(src,event) figResize(src,event,minR,minA,minS));
+    case 'maci64'
+        whratio = 1.0187; %Width-to-height ratio
+        w = 8.5*72; %Width in pixels
+        % link the callback function to new figure
+        fh = uifigure('WindowButtonDownFcn',@(src, event) myCallback(src, event, minR, minA, minS),'Name',figName,'NumberTitle','off','Units','pixels','Position',[0,0,w,w/whratio],'AutoResizeChildren','off','SizeChangedFcn',@(src,event) figResize(src,event,minR,minA,minS));
+    otherwise
+        error('Unsupported operating system!');
+end
+
 movegui(fh,'center')
 % store data as figure property
 set(fh,'UserData',mydata);

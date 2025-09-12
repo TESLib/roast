@@ -16,8 +16,10 @@ switch arch
         niftyreg_path = fullfile(pwd, 'lib', 'NiftyReg', 'win', filesep);
     case 'glnxa64'
         niftyreg_path = fullfile(pwd, 'lib', 'NiftyReg', 'linux', filesep);
+        system(['chmod +x ' niftyreg_path 'reg_aladin']);
     case 'maci64'
         niftyreg_path = fullfile(pwd, 'lib', 'NiftyReg', 'mac', filesep);
+        system(['chmod +x ' niftyreg_path 'reg_aladin']);
     otherwise
         error('Unsupported operating system!');
 end
