@@ -14,7 +14,7 @@ function runMultiaxial(T1)
 str = computer('arch');
 switch str
     case 'win64'
-        if ~exist('multiaxialEnv', 'dir')
+        if ~exist('lib\multiaxial\multiaxialEnv', 'dir')
             system([pwd '\lib\multiaxial\setupWindows.bat']);
         else
             disp('Enviornment already exist on Windows. Skipping setup...');
@@ -28,6 +28,7 @@ switch str
         end
 
         pythonExecutable = [pwd '\lib\multiaxial\multiaxialEnv\python.exe'];
+        pythonScript = [pwd '\lib\multiaxial\SEGMENT.py'];
 
     case 'glnxa64'
         setupScript = [pwd '/lib/multiaxial/setupLinux.sh'];
@@ -35,13 +36,14 @@ switch str
         % Grant execute permissions to the script
         system(['chmod +x ' setupScript]);
 
-        if ~exist('multiaxialEnvLinux', 'dir')
+        if ~exist('lib/multiaxial/multiaxialEnvLinux', 'dir')
             system([pwd '/lib/multiaxial/setupLinux.sh']);
         else
             disp('Enviornment already exist on Linux. Skipping setup...');
         end
 
         pythonExecutable = [pwd '/lib/multiaxial/multiaxialEnvLinux/bin/python3'];
+        pythonScript = [pwd '/lib/multiaxial/SEGMENT.py'];
 
     case 'maci64'
         setupScript = [pwd '/lib/multiaxial/setupMac.sh'];
@@ -49,19 +51,18 @@ switch str
         % Grant execute permissions to the script
         system(['chmod +x ' setupScript]);
 
-        if ~exist('multiaxialEnvMac', 'dir')
+        if ~exist('lib/multiaxial/multiaxialEnvMac', 'dir')
             system([pwd '/lib/multiaxial/setupMac.sh']);
         else
             disp('Enviornment already exist on Mac. Skipping setup...');
         end
 
         pythonExecutable = [pwd '/lib/multiaxial/multiaxialEnvMac/bin/python3'];
+        pythonScript = [pwd '/lib/multiaxial/SEGMENT.py'];
 
     otherwise
         error('Unsupported operating system!');
 end
-
-pythonScript = [pwd '/lib/multiaxial/SEGMENT.py'];
 
 T1 = ['"' T1 '"']; % To allow spaces in subject path
 

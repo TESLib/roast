@@ -36,6 +36,7 @@ def main():
     
     if not os.path.isabs(subj):
         subj = os.path.join(working_dir, subj)
+        subj = subj.replace('\\', '/')
     OUTPUT_PATH = os.path.join(os.path.dirname(subj), '')
     scan_path = subj
     # print(f"Output path: {OUTPUT_PATH}")
@@ -95,7 +96,7 @@ def main():
 
     # print(f"Scan shape: {nii.shape}")
 
-    subject = scan_path.split('/')[-1].replace('.nii', '')
+    subject = scan_path.split('/')[-1][:-4]
     # subject = scan_path.split('/')[-2]
     # if subject.startswith('r'):
     #    subject = subject[1:]
