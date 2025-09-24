@@ -12,7 +12,6 @@ del %CONDA_INSTALLER%
 call "%USERPROFILE%\miniconda3\Scripts\activate"
 
 :: Create Conda environment
-conda tos accept
 conda env create -f %YAML_FILE% --prefix %ENV_NAME%
 
 :: Get the path of the conda environment

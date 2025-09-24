@@ -738,7 +738,7 @@ Huang, Y., Thomas, C., Datta, A., Parra, L.C., [Optimized tDCS for Targeting Mul
 
 If you also use the Multiaxial for segmentation by turning on the `multiaxial` option, please cite this:
 
-Birnbaum, A.M., Buchwald, A., Turkeltaub, P., Jacks, A., Huang, Y., Datta, A., Parra, L.C., Hirsch, L.A., [Full-Head Segmentation of MRI with Abnormal Brain Anatomy: Model and Data Release](https://arxiv.org/abs/2501.18716), arXiv preprint arXiv:2501.18716 (Jan 2025).
+Birnbaum, A.M., Buchwald, A., Turkeltaub, P., Jacks, A., Carr, G., Kannan, S., Huang, Y., Datta, A., Parra, L.C., Hirsch, L.A., [Full-head segmentation of MRI with abnormal brain anatomy: model and data release](https://doi.org/10.1117/1.JMI.12.5.054001), Journal of Medical Imaging, Vol. 12, Issue 5, 054001, 2025
 
 ROAST was supported by the NIH through grants R01MH111896, R01MH111439, R01NS095123, R44NS092144, R41NS076123, and by [Soterix Medical Inc](https://soterixmedical.com/).
 
@@ -787,4 +787,4 @@ ROAST is considered as an "aggregate" rather than "derived work", based on the d
 
 yhuang16@citymail.cuny.edu
 
-August 2025
+September 2025

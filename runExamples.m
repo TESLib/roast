@@ -400,5 +400,72 @@ end
 % pause
 close all
 
-% add test on roast manual gui and align
-% add test on reviewRes
+try
+    roast_target([],'LFwithMA',[52 184 72;25 80 72;139 171 72],'coordType','voxel','optType','wls-l1','k',0.002,'orient',{'radial-in',[-1 1 1],'posterior'},'targetingTag','mixed_orient')
+catch ME
+    fid=fopen('errLog.txt','a');
+    fprintf(fid,'error at running cmd 36:\n');
+    fprintf(fid,'%s\n',ME.message);
+    fclose(fid);
+end
+% pause
+close all
+
+try
+    roast_target('nyhead','nyLFwithMA',[-48 -8 50;48 -8 50],'optType','lcmv-l1','orient','optimal','targetingTag','nyOptOri')
+catch ME
+    fid=fopen('errLog.txt','a');
+    fprintf(fid,'error at running cmd 37:\n');
+    fprintf(fid,'%s\n',ME.message);
+    fclose(fid);
+end
+% pause
+close all
+
+% reviewRes('','20250919T182420')
+try
+    reviewRes('example/subject1.nii','awesomeSimulation','all')
+catch ME
+    fid=fopen('errLog.txt','a');
+    fprintf(fid,'error at running cmd 38:\n');
+    fprintf(fid,'%s\n',ME.message);
+    fclose(fid);
+end
+% pause
+close all
+
+% reviewRes('nyhead','20250920T003946')
+try
+    reviewRes('','LFwithMA','bone','','3targets_radialIn')
+catch ME
+    fid=fopen('errLog.txt','a');
+    fprintf(fid,'error at running cmd 39:\n');
+    fprintf(fid,'%s\n',ME.message);
+    fclose(fid);
+end
+% pause
+close all
+
+try
+    reviewRes('','LFwithMA','white','','mixed_orient')
+catch ME
+    fid=fopen('errLog.txt','a');
+    fprintf(fid,'error at running cmd 40:\n');
+    fprintf(fid,'%s\n',ME.message);
+    fclose(fid);
+end
+% pause
+close all
+
+try
+    reviewRes('nyhead','nyLFwithMA','','','nyOptOri')
+catch ME
+    fid=fopen('errLog.txt','a');
+    fprintf(fid,'error at running cmd 41:\n');
+    fprintf(fid,'%s\n',ME.message);
+    fclose(fid);
+end
+% pause
+close all
+
+% roast('','','manualgui','on')

@@ -1,4 +1,4 @@
-ROAST V4.0 (codename: Dyker Heights) -- 2025/08/xx:
+ROAST V4.0 (codename: Dyker Heights) -- 2025/09/24:
 
 Replaced the MultiPriors by the Multiaxial (a different CNN) as the segmentation engine that is better and fully independent from SPM, for modeling heads with abnormal anatomies (e.g. lesions).
 

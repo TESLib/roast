@@ -33,6 +33,8 @@ if ~isempty(template) % for roast()
     
     F = TriScatteredInterp(node(C{1},1:3), C{2});
     vol_all = F(xi,yi,zi);
+
+    if all(isnan(vol_all(:))), error('getDP did not converge. Please check getDP before proceeding.'); end
     
     fid = fopen([dirname filesep subjName '_' uniTag '_e.pos']);
     fgetl(fid);
@@ -46,6 +48,8 @@ if ~isempty(template) % for roast()
     ef_all(:,:,:,2) = F(xi,yi,zi);
     F = TriScatteredInterp(node(C{1},1:3), C{4});
     ef_all(:,:,:,3) = F(xi,yi,zi);
+
+    if all(isnan(ef_all(:))), error('getDP did not converge. Please check getDP before proceeding.'); end
     
     ef_mag = sqrt(sum(ef_all.^2,4));
     
